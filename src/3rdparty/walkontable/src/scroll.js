@@ -53,7 +53,9 @@ class WalkontableScroll {
       topOverlay.scrollTo(coords.row);
 
     } else if (coords.row > this.getLastVisibleRow() && coords.row < totalRows - fixedRowsBottom) {
-      topOverlay.scrollTo(coords.row, true);
+      if (!Handsontable.Dom.hasClass(document.body, 'quire-account-for-scrolling')) {
+        topOverlay.scrollTo(coords.row, true);
+      }
     }
 
     if (coords.col >= fixedColumnsLeft && coords.col < this.getFirstVisibleColumn()) {

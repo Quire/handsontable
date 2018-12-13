@@ -299,6 +299,20 @@ const REGISTERED_HOOKS = [
   'afterOnCellMouseDown',
 
   /**
+   * Callback fired after clicking on a cell or row/column header.
+   * In case the row/column header was clicked, the index is negative.
+   * For example clicking on the row header of cell (0, 0) results with `afterOnCellMouseDown` called
+   * with coords `{row: 0, col: -1}`.
+   *
+   * @event Hooks#afterOnCellMouseDown
+   * @since 0.32.1 quire-origin
+   * @param {Object} event `mousedown` event object.
+   * @param {Object} coords Coordinates object containing the row and column indexes of the clicked cell.
+   * @param {Element} TD Cell's TD (or TH) element.
+   */
++  'afterOnCellMouseUp'
+
+  /**
    * Callback fired after hovering a cell or row/column header with the mouse cursor.
    * In case the row/column header was hovered, the index is negative.
    * For example, hovering over the row header of cell (0, 0) results with `afterOnCellMouseOver` called
@@ -324,6 +338,14 @@ const REGISTERED_HOOKS = [
   'afterOnCellMouseOut',
 
   /**
++   * Callback fired after meta data is removed from a cell.
++   *
++   * @event Hooks#afterOnCellMouseOver
++   * @since 0.32.1 quire-develop
++   */
++  'afterRemoveCellMeta',
++
++  /**
    * Callback is fired when one or more columns are removed.
    *
    * @event Hooks#afterRemoveCol

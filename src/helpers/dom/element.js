@@ -477,9 +477,11 @@ export function offset(elem) {
     offsetTop,
     lastElem,
     docElem,
-    box;
+    box,
+    quireAccountForScrolling;
 
   docElem = document.documentElement;
+  quireAccountForScrolling = hasClass(document.body, 'quire-account-for-scrolling');
 
   if (hasCaptionProblem() && elem.firstChild && elem.firstChild.nodeName === 'CAPTION') {
     // fixes problem with Firefox ignoring <caption> in TABLE offset (see also export outerHeight)
@@ -503,6 +505,7 @@ export function offset(elem) {
     }
     offsetLeft += elem.offsetLeft;
     offsetTop += elem.offsetTop;
+    quireAccountForScrolling && (offsetTop -= elem.scrollTop);
     lastElem = elem;
   }
   /* jshint ignore:end */

@@ -26,7 +26,7 @@ Handsontable.Search = function Search(instance) {
         var cellProperties = instance.getCellMeta(rowIndex, colIndex);
         var cellCallback = cellProperties.search.callback || callback;
         var cellQueryMethod = cellProperties.search.queryMethod || queryMethod;
-        var testResult = cellQueryMethod(queryStr, cellData);
+        var testResult = cellQueryMethod(queryStr, cellData, cellProperties, rowIndex, colIndex);
 
         if (testResult) {
           var singleResult = {

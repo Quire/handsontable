@@ -33,6 +33,15 @@ quire-origin: the base starting point for the Quire Fork
 quire-develop: primary development branch for Quire changes
 quire-master: release branch for Quire changes
 
+### Cloning
+after cloning this branch, enable git hubflow by:
+`git hf init -a`
+making sure to select quire-master and quire-develop when prompted
+
+### Building
+[Configuration Instructions](https://handsontable.com/docs/6.2.0/tutorial-custom-build.html)
+`npm run build`
+
 ### Alternative installation
 - [Download ZIP](https://github.com/handsontable/handsontable/archive/master.zip)
 - [Download from nuget](https://www.nuget.org/packages/Handsontable/)

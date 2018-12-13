@@ -310,7 +310,7 @@ const REGISTERED_HOOKS = [
    * @param {Object} coords Coordinates object containing the row and column indexes of the clicked cell.
    * @param {Element} TD Cell's TD (or TH) element.
    */
-+  'afterOnCellMouseUp'
+  'afterOnCellMouseUp',
 
   /**
    * Callback fired after hovering a cell or row/column header with the mouse cursor.
@@ -338,14 +338,14 @@ const REGISTERED_HOOKS = [
   'afterOnCellMouseOut',
 
   /**
-+   * Callback fired after meta data is removed from a cell.
-+   *
-+   * @event Hooks#afterOnCellMouseOver
-+   * @since 0.32.1 quire-develop
-+   */
-+  'afterRemoveCellMeta',
-+
-+  /**
+   * Callback fired after meta data is removed from a cell.
+   *
+   * @event Hooks#afterOnCellMouseOver
+   * @since 0.32.1 quire-develop
+   */
+  'afterRemoveCellMeta',
+
+  /**
    * Callback is fired when one or more columns are removed.
    *
    * @event Hooks#afterRemoveCol

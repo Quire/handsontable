@@ -27,6 +27,12 @@ or
 bower install handsontable --save
 ```
 
+## Quire Integration
+*Relevant Branches*
+quire-origin: the base starting point for the Quire Fork
+quire-develop: primary development branch for Quire changes
+quire-master: release branch for Quire changes
+
 ### Alternative installation
 - [Download ZIP](https://github.com/handsontable/handsontable/archive/master.zip)
 - [Download from nuget](https://www.nuget.org/packages/Handsontable/)

@@ -5,6 +5,6 @@ _SpecRunner.html
 cars.sqlite
 dev*.html
 npm-debug.log
-
+/dist/*
 !dist/README.md
 node_modules/

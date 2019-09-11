@@ -332,11 +332,17 @@ var afterUpdateSettings = function() {
 
   if (mergeCellsSetting) {
     if (instance.mergeCells) {
-      instance.mergeCells.mergedCellInfoCollection = new CellInfoCollection();
+      // Quire 1893 - if merge cells were already configured
+      // this is going to nuke the current merge settings.
+      // To avoid that, we only come through here if the
+      // plugin is transitioning from disabled to enabled
+      if (!instance.mergeCells.mergedCellInfoCollection) {
+        instance.mergeCells.mergedCellInfoCollection = new CellInfoCollection();
 
-      if (Array.isArray(mergeCellsSetting)) {
-        for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
-          instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
+        if (Array.isArray(mergeCellsSetting)) {
+          for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
+            instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
+          }
         }
       }
     } else {

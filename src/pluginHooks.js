@@ -1487,6 +1487,22 @@ const REGISTERED_HOOKS = [
    * @param {Number} column Column index of the edited cell.
    */
   'afterBeginEditing'
+
+  /**
+   * Callback fired after cells are merged.
+   *
+   * @event Hooks#afterCellsMerged
+   * @since 0.32.1 quire-develop
+   */
+  'afterCellsMerged',
+
+  /**
+   * Callback fired after cells are unmerged.
+   *
+   * @event Hooks#afterCellsUnmerged
+   * @since 0.32.1 quire-develop
+   */
+  'afterCellsUnmerged'
 ];
 
 import {arrayEach} from './helpers/array';

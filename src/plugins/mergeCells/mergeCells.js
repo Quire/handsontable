@@ -48,7 +48,7 @@ function CellInfoCollection() {
  * @plugin MergeCells
  * @class MergeCells
  */
-function MergeCells(mergeCellsSetting) {
+function MergeCells(instance, mergeCellsSetting) {
   this.mergedCellInfoCollection = new CellInfoCollection();
 
   if (Array.isArray(mergeCellsSetting)) {
@@ -56,6 +56,15 @@ function MergeCells(mergeCellsSetting) {
       this.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
     }
   }
+
+  // Quire - 1893
+  // need to notify listeners that cells have been merged or unmerged.
+  this.fireCellsMerged = function(mergeContext) {
+    instance.runHooks('afterCellsMerged', mergeContext);
+  };
+  this.fireCellsUnmerged = function(row, col) {
+    instance.runHooks('afterCellsUnmerged', row, col);
+  };
 }
 
 /**
@@ -82,6 +91,7 @@ MergeCells.prototype.mergeRange = function(cellRange) {
   mergeParent.rowspan = bottomRight.row - topLeft.row + 1;
   mergeParent.colspan = bottomRight.col - topLeft.col + 1;
   this.mergedCellInfoCollection.setInfo(mergeParent);
+  this.fireCellsMerged(mergeParent);
 };
 
 MergeCells.prototype.mergeOrUnmergeSelection = function(cellRange) {
@@ -102,6 +112,7 @@ MergeCells.prototype.mergeSelection = function(cellRange) {
 MergeCells.prototype.unmergeSelection = function(cellRange) {
   var info = this.mergedCellInfoCollection.getInfo(cellRange.row, cellRange.col);
   this.mergedCellInfoCollection.removeInfo(info.row, info.col);
+  this.fireCellsUnmerged(info.row, info.col);
 };
 
 MergeCells.prototype.applySpanProperties = function(TD, row, col) {
@@ -302,7 +313,7 @@ var beforeInit = function() {
 
   if (mergeCellsSetting) {
     if (!instance.mergeCells) {
-      instance.mergeCells = new MergeCells(mergeCellsSetting);
+      instance.mergeCells = new MergeCells(instance, mergeCellsSetting);
     }
   }
 };
@@ -346,7 +357,7 @@ var afterUpdateSettings = function() {
         }
       }
     } else {
-      instance.mergeCells = new MergeCells(mergeCellsSetting);
+      instance.mergeCells = new MergeCells(instance, mergeCellsSetting);
     }
 
   } else {

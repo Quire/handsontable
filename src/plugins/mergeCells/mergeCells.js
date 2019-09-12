@@ -38,6 +38,17 @@ function CellInfoCollection() {
     }
   };
 
+  collection.serialize = function() {
+    return this.map(function(item) {
+      return {
+        col: item.col,
+        colspan: item.colspan,
+        row: item.row,
+        rowspan: item.rowspan
+      };
+    });
+  };
+
   return collection;
 }
 
@@ -49,6 +60,8 @@ function CellInfoCollection() {
  * @class MergeCells
  */
 function MergeCells(instance, mergeCellsSetting) {
+  var scope = this;
+
   this.mergedCellInfoCollection = new CellInfoCollection();
 
   if (Array.isArray(mergeCellsSetting)) {
@@ -60,10 +73,10 @@ function MergeCells(instance, mergeCellsSetting) {
   // Quire - 1893
   // need to notify listeners that cells have been merged or unmerged.
   this.fireCellsMerged = function(mergeContext) {
-    instance.runHooks('afterCellsMerged', mergeContext);
+    instance.runHooks('afterCellsMerged', scope);
   };
   this.fireCellsUnmerged = function(row, col) {
-    instance.runHooks('afterCellsUnmerged', row, col);
+    instance.runHooks('afterCellsUnmerged', scope);
   };
 }
 
@@ -116,7 +129,8 @@ MergeCells.prototype.unmergeSelection = function(cellRange) {
 };
 
 MergeCells.prototype.applySpanProperties = function(TD, row, col) {
-  var info = this.mergedCellInfoCollection.getInfo(row, col);
+  var info = this.mergedCellInfoCollection.getInfo(row, col),
+      classList;
 
   if (info) {
     if (info.row === row && info.col === col) {
@@ -129,8 +143,11 @@ MergeCells.prototype.applySpanProperties = function(TD, row, col) {
       TD.style.display = 'none';
     }
   } else {
-    TD.removeAttribute('rowspan');
-    TD.removeAttribute('colspan');
+    classList = TD.classList;
+    if (!classList.contains('mergeCells-ignore')) {
+      TD.removeAttribute('rowspan');
+      TD.removeAttribute('colspan');
+    }
   }
 };
 
@@ -305,6 +322,12 @@ MergeCells.prototype.shiftCollection = function(direction, index, count) {
 
   }
 
+};
+
+/** Quire 1839 - provide a means to serialize the current merged state
+*/
+MergeCells.prototype.serialize = function() {
+  return this.mergedCellInfoCollection.serialize();
 };
 
 var beforeInit = function() {

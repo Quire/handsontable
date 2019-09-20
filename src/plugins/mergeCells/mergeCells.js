@@ -10,6 +10,10 @@ export {MergeCells};
 function CellInfoCollection() {
   var collection = [];
 
+  collection.clear = function() {
+    this.length = 0;
+  };
+
   collection.getInfo = function(row, col) {
     for (var i = 0, ilen = this.length; i < ilen; i++) {
       if (this[i].row <= row && this[i].row + this[i].rowspan - 1 >= row &&
@@ -372,11 +376,13 @@ var afterUpdateSettings = function() {
       // plugin is transitioning from disabled to enabled
       if (!instance.mergeCells.mergedCellInfoCollection) {
         instance.mergeCells.mergedCellInfoCollection = new CellInfoCollection();
+      }
 
-        if (Array.isArray(mergeCellsSetting)) {
-          for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
-            instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
-          }
+      if (Array.isArray(mergeCellsSetting)) {
+        instance.mergeCells.mergedCellInfoCollection.clear();
+
+        for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
+          instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
         }
       }
     } else {

@@ -121,11 +121,11 @@ MergeCells.prototype.mergeOrUnmergeSelection = function(cellRange) {
   var info = this.mergedCellInfoCollection.getInfo(cellRange.from.row, cellRange.from.col);
   if (info) {
     //unmerge
-    if (false === this.fireBeforeCellsUnmerged(this, cellRange)) { return; }
+    if (this.fireBeforeCellsUnmerged(this, cellRange) === false) { return; }
     this.unmergeSelection(cellRange.from);
   } else {
     //merge
-    if (false === this.fireBeforeCellsMerged(this, cellRange)) { return; }
+    if (this.fireBeforeCellsMerged(this, cellRange) === false) { return; }
     this.mergeSelection(cellRange);
   }
 };

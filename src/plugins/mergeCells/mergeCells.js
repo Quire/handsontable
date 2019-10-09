@@ -76,6 +76,12 @@ function MergeCells(instance, mergeCellsSetting) {
 
   // Quire - 1893
   // need to notify listeners that cells have been merged or unmerged.
+  this.fireBeforeCellsMerged = function(mergeContext) {
+    instance.runHooks('beforeCellsMerged', scope);
+  };
+  this.fireBeforeCellsUnmerged = function(row, col) {
+    instance.runHooks('beforeCellsUnmerged', scope);
+  };
   this.fireCellsMerged = function(mergeContext) {
     instance.runHooks('afterCellsMerged', scope);
   };
@@ -115,9 +121,11 @@ MergeCells.prototype.mergeOrUnmergeSelection = function(cellRange) {
   var info = this.mergedCellInfoCollection.getInfo(cellRange.from.row, cellRange.from.col);
   if (info) {
     //unmerge
+    if (false === this.fireBeforeCellsUnmerged(this, cellRange)) { return; }
     this.unmergeSelection(cellRange.from);
   } else {
     //merge
+    if (false === this.fireBeforeCellsMerged(this, cellRange)) { return; }
     this.mergeSelection(cellRange);
   }
 };
@@ -436,7 +444,7 @@ var addMergeActionsToContextMenu = function(defaultOptions) {
       this.render();
     },
     disabled: function() {
-      var range = this.this.getSelectedRange(),
+      var range = this.getSelectedRange(),
           info = this.mergeCells.mergedCellInfoCollection.getInfo(range.from.row, range.from.col);
 
       return this.selection.selectedHeader.corner ||

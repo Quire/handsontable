@@ -436,7 +436,11 @@ var addMergeActionsToContextMenu = function(defaultOptions) {
       this.render();
     },
     disabled: function() {
-      return this.selection.selectedHeader.corner;
+      var range = this.this.getSelectedRange(),
+          info = this.mergeCells.mergedCellInfoCollection.getInfo(range.from.row, range.from.col);
+
+      return this.selection.selectedHeader.corner ||
+        (range.from.row == range.to.row && range.from.col == range.to.col && !info);
     },
   });
 };

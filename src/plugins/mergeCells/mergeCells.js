@@ -77,10 +77,10 @@ function MergeCells(instance, mergeCellsSetting) {
   // Quire - 1893
   // need to notify listeners that cells have been merged or unmerged.
   this.fireBeforeCellsMerged = function(mergeContext) {
-    instance.runHooks('beforeCellsMerged', scope);
+    return instance.runHooks('beforeCellsMerged', scope);
   };
   this.fireBeforeCellsUnmerged = function(row, col) {
-    instance.runHooks('beforeCellsUnmerged', scope);
+    return instance.runHooks('beforeCellsUnmerged', scope);
   };
   this.fireCellsMerged = function(mergeContext) {
     instance.runHooks('afterCellsMerged', scope);

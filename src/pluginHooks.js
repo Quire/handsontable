@@ -1502,7 +1502,23 @@ const REGISTERED_HOOKS = [
    * @event Hooks#afterCellsUnmerged
    * @since 0.32.1 quire-develop
    */
-  'afterCellsUnmerged'
+  'afterCellsUnmerged',
+
+  /**
+   * Callback fired before cells are merged.
+   *
+   * @event Hooks#beforeCellsMerged
+   * @since 0.32.1 quire-develop
+   */
+  'beforeCellsMerged',
+
+  /**
+   * Callback fired before cells are unmerged.
+   *
+   * @event Hooks#beforeCellsUnmerged
+   * @since 0.32.1 quire-develop
+   */
+  'beforeCellsUnmerged'
 ];
 
 import {arrayEach} from './helpers/array';

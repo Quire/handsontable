@@ -326,6 +326,10 @@ MergeCells.prototype.shiftCollection = function(direction, index, count) {
       if (index <= currentMerge.col) {
         currentMerge.col += shiftVector[0];
       }
+      // Quire 1869 - adding/removing a column needs to update the colspan
+      if (index >= currentMerge.col && index < (currentMerge.col + currentMerge.colspan)) {
+        currentMerge.colspan += shiftVector[0];
+      }
     } else {
       if (index <= currentMerge.row) {
         currentMerge.row += shiftVector[1];

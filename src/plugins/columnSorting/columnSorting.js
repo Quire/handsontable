@@ -540,7 +540,9 @@ class ColumnSorting extends BasePlugin {
       return;
     }
 
-    if (this.hot.getSettings().columnSorting && col >= 0 && headerLevel === -1) {
+    const colMeta = this.hot.getCellMeta(0, col);
+
+    if (!colMeta.sortingDisabled && this.hot.getSettings().columnSorting && col >= 0 && headerLevel === -1) {
       addClass(headerLink, 'columnSorting');
     }
     removeClass(headerLink, 'descending');

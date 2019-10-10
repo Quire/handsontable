@@ -328,6 +328,18 @@ MergeCells.prototype.shiftCollection = function(direction, index, count) {
 
 };
 
+/** Quire 1839 - reload the set of merged cells used by table copy/paste
+*/
+MergeCells.prototype.reload = function(mergeCellsSetting) {
+  this.mergedCellInfoCollection.clear();
+
+  if (Array.isArray(mergeCellsSetting)) {
+    for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
+      this.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
+    }
+  }
+};
+
 /** Quire 1839 - provide a means to serialize the current merged state
 */
 MergeCells.prototype.serialize = function() {
@@ -376,15 +388,13 @@ var afterUpdateSettings = function() {
       // plugin is transitioning from disabled to enabled
       if (!instance.mergeCells.mergedCellInfoCollection) {
         instance.mergeCells.mergedCellInfoCollection = new CellInfoCollection();
-      }
-
-      if (Array.isArray(mergeCellsSetting)) {
-        instance.mergeCells.mergedCellInfoCollection.clear();
-
-        for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
-          instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
+        if (Array.isArray(mergeCellsSetting)) {
+          for (var i = 0, ilen = mergeCellsSetting.length; i < ilen; i++) {
+            instance.mergeCells.mergedCellInfoCollection.setInfo(mergeCellsSetting[i]);
+          }
         }
       }
+
     } else {
       instance.mergeCells = new MergeCells(instance, mergeCellsSetting);
     }

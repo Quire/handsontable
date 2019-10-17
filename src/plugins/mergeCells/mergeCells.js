@@ -298,24 +298,22 @@ MergeCells.prototype.modifyTransform = function(hook, currentSelectedRange, delt
 };
 
 MergeCells.prototype.shiftCollection = function(direction, index, count) {
-  var shiftVector = [0, 0];
+  var shiftVector = [0, 0],
+      isColumnDelete = false;
 
   switch (direction) {
     case 'right':
       shiftVector[0] += 1;
-
       break;
     case 'left':
       shiftVector[0] -= 1;
-
+      isColumnDelete = true;
       break;
     case 'down':
       shiftVector[1] += 1;
-
       break;
     case 'up':
       shiftVector[1] -= 1;
-
       break;
   }
 
@@ -323,7 +321,9 @@ MergeCells.prototype.shiftCollection = function(direction, index, count) {
     var currentMerge = this.mergedCellInfoCollection[i];
 
     if (direction === 'right' || direction === 'left') {
-      if (index <= currentMerge.col) {
+      // Quire 1869 - if the column being removed is the first one
+      // then we do not want to deduct as that will mess everything up.
+      if (index <= currentMerge.col && (!isColumnDelete || (isColumnDelete && currentMerge.col > 0))) {
         currentMerge.col += shiftVector[0];
       }
       // Quire 1869 - adding/removing a column needs to update the colspan

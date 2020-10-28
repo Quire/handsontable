@@ -105,7 +105,8 @@ function TableView(instance) {
     var eventX = event.x || event.clientX;
     var eventY = event.y || event.clientY;
 
-    if (isMouseDown || !instance.rootElement) {
+    // QWEB-192: allow editors to halt click handling when rendering modals / dropdowns / etc.
+    if (isMouseDown || !instance.rootElement || event.ignoreHoTClicks) {
       return; // it must have been started in a cell
     }
 

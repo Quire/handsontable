@@ -41,6 +41,10 @@ It provides data binding, data validation, filtering, sorting, and CRUD operatio
 
 </div>
 
+## Quire Fork Information
+quire-pro-develop: Feature branches from the Pro release are based on this.
+quire-pro-main: Release branches from the Pro release are based on this.
+quire-pro-origin: Original Pro branch before any Quire customizations were made.
 ## Features
 
 The most popular features of Handsontable:

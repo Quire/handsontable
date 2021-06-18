@@ -290,6 +290,16 @@ export class MergeCells extends BasePlugin {
   }
 
   /**
+    * Serializations the merged cell container
+    * Quire Extension
+    *
+    * @returns {Array[] A copy of the merged cell state suitable for persisting in remote storage}
+    */
+  serializeCollections() {
+    return this.mergedCellsCollection.serialize();
+  }
+
+  /**
    * Returns `true` if a range is mergeable.
    *
    * @private

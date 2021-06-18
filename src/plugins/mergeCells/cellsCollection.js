@@ -301,6 +301,25 @@ class MergedCellsCollection {
   }
 
   /**
+    * Serializations the merged cell container
+    * Quire Extension
+    *
+    * @returns {Array[] A copy of the merged cell state suitable for persisting in remote storage}
+    */
+  serialize() {
+    return this.mergedCells.map(
+      function(entry) {
+        return {
+          col: entry.col,
+          colspan: entry.colspan,
+          row: entry.row,
+          rowspan: entry.rowspan
+        };
+      }
+    );
+  }
+
+  /**
    * Shift the merged cell in the direction and by an offset defined in the arguments.
    *
    * @param {string} direction `right`, `left`, `up` or `down`.

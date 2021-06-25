@@ -589,7 +589,8 @@ export class Comments extends BasePlugin {
 
     priv.cellBelowCursor = rootDocument.elementFromPoint(event.clientX, event.clientY);
 
-    if (this.mouseDown || this.editor.isFocused() || hasClass(event.target, 'wtBorder')
+    // RYANJ - when moving the mouse down across rows (priv.cellBelowCursor !== event.target) but works properly when moving up rows
+    if (this.mouseDown || this.preparingForEdit || this.editor.isFocused() || hasClass(event.target, 'wtBorder')
         || priv.cellBelowCursor !== event.target || !this.editor) {
       return;
     }
@@ -693,11 +694,12 @@ export class Comments extends BasePlugin {
       from: coords.highlight,
     });
     this.show();
-
+    this.preparingForEdit = true;
     setTimeout(() => {
       if (this.hot) {
         this.hot.deselectCell();
         this.editor.focus();
+        delete this.preparingForEdit;
       }
     }, 10);
   }

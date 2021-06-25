@@ -29,7 +29,7 @@
  * FROM USE OR INABILITY TO USE THIS SOFTWARE.
  * 
  * Version: 9.0.0
- * Release date: 01/06/2021 (built at 25/06/2021 17:21:52)
+ * Release date: 01/06/2021 (built at 31/05/2021 17:37:39)
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1510,7 +1510,7 @@ var _feature = __webpack_require__(93);
 
 var _browser = __webpack_require__(80);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 /**
  * Get the parent of the specified node in the DOM tree.
@@ -4467,7 +4467,7 @@ var _array = __webpack_require__(13);
 
 var _object = __webpack_require__(12);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _console = __webpack_require__(67);
 
@@ -8342,28 +8342,6 @@ function isKey(keyCode, baseCode) {
 
 "use strict";
 
-var $ = __webpack_require__(23);
-var $map = __webpack_require__(95).map;
-var arrayMethodHasSpeciesSupport = __webpack_require__(121);
-
-var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
-
-// `Array.prototype.map` method
-// https://tc39.es/ecma262/#sec-array.prototype.map
-// with adding support of @@species
-$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
-  map: function map(callbackfn /* , thisArg */) {
-    return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
-  }
-});
-
-
-/***/ }),
-/* 70 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
 
 var _interopRequireDefault = __webpack_require__(0);
 
@@ -8500,6 +8478,28 @@ function stripTags(string) {
 function sanitize(string, options) {
   return _dompurify.default.sanitize(string, options);
 }
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var $ = __webpack_require__(23);
+var $map = __webpack_require__(95).map;
+var arrayMethodHasSpeciesSupport = __webpack_require__(121);
+
+var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('map');
+
+// `Array.prototype.map` method
+// https://tc39.es/ecma262/#sec-array.prototype.map
+// with adding support of @@species
+$({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
+  map: function map(callbackfn /* , thisArg */) {
+    return $map(this, callbackfn, arguments.length > 1 ? arguments[1] : undefined);
+  }
+});
+
 
 /***/ }),
 /* 71 */
@@ -17009,7 +17009,7 @@ __webpack_require__(74);
 
 __webpack_require__(75);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(37);
 
@@ -17376,7 +17376,7 @@ var _slicedToArray2 = _interopRequireDefault(__webpack_require__(20));
 
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(26));
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _priorityMap = __webpack_require__(388);
 
@@ -17685,7 +17685,7 @@ __webpack_require__(21);
 
 __webpack_require__(34);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(25);
 
@@ -18647,7 +18647,7 @@ __webpack_require__(57);
 
 __webpack_require__(25);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(5);
 
@@ -20591,7 +20591,7 @@ __webpack_require__(6);
 
 __webpack_require__(39);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(25);
 
@@ -20647,7 +20647,7 @@ var _settings = __webpack_require__(318);
 
 var _data = __webpack_require__(106);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _pluginHooks = _interopRequireDefault(__webpack_require__(48));
 
@@ -22333,7 +22333,7 @@ var _registry2 = __webpack_require__(152);
 
 var _registry3 = __webpack_require__(153);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _number = __webpack_require__(27);
 
@@ -39501,7 +39501,7 @@ var _taggedTemplateLiteral2 = _interopRequireDefault(__webpack_require__(58));
 
 __webpack_require__(77);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(19);
 
@@ -40758,7 +40758,7 @@ var numberHelpers = _interopRequireWildcard(__webpack_require__(27));
 
 var objectHelpers = _interopRequireWildcard(__webpack_require__(12));
 
-var stringHelpers = _interopRequireWildcard(__webpack_require__(70));
+var stringHelpers = _interopRequireWildcard(__webpack_require__(69));
 
 var unicodeHelpers = _interopRequireWildcard(__webpack_require__(68));
 
@@ -41082,7 +41082,7 @@ Handsontable.Core = function (rootElement) {
 };
 
 Handsontable.packageName = 'handsontable';
-Handsontable.buildDate = "25/06/2021 17:21:52";
+Handsontable.buildDate = "31/05/2021 17:37:39";
 Handsontable.version = "9.0.0";
 Handsontable.languages = {
   dictionaryKeys: _registry.dictionaryKeys,
@@ -45829,7 +45829,7 @@ var _element = __webpack_require__(16);
 
 var _object = __webpack_require__(12);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _event = _interopRequireDefault(__webpack_require__(261));
 
@@ -47407,7 +47407,7 @@ __webpack_require__(4);
 
 __webpack_require__(6);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(73);
 
@@ -50274,7 +50274,7 @@ exports.LinkedPhysicalIndexToValueMap = void 0;
 
 __webpack_require__(21);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(5);
 
@@ -56591,7 +56591,7 @@ var _element = __webpack_require__(16);
 
 var _mixed = __webpack_require__(22);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _unicode = __webpack_require__(68);
 
@@ -58779,7 +58779,7 @@ var _event = __webpack_require__(46);
 
 var _function = __webpack_require__(52);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _mixed = __webpack_require__(22);
 
@@ -61048,7 +61048,7 @@ var _number = __webpack_require__(27);
 
 var _samplesGenerator = _interopRequireDefault(__webpack_require__(298));
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _src = __webpack_require__(40);
 
@@ -63556,7 +63556,7 @@ var _number = __webpack_require__(27);
 
 var _samplesGenerator = _interopRequireDefault(__webpack_require__(298));
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _translations = __webpack_require__(53);
 
@@ -65252,7 +65252,7 @@ __webpack_require__(25);
 
 __webpack_require__(268);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 var _defineProperty2 = _interopRequireDefault(__webpack_require__(35));
 
@@ -67097,7 +67097,7 @@ var Comments = /*#__PURE__*/function (_BasePlugin) {
       var rootDocument = this.hot.rootDocument;
       priv.cellBelowCursor = rootDocument.elementFromPoint(event.clientX, event.clientY);
 
-      if (this.mouseDown || this.preparingForEdit || this.editor.isFocused() || (0, _element.hasClass)(event.target, 'wtBorder') || priv.cellBelowCursor !== event.target || !this.editor) {
+      if (this.mouseDown || this.editor.isFocused() || (0, _element.hasClass)(event.target, 'wtBorder') || priv.cellBelowCursor !== event.target || !this.editor) {
         return;
       }
 
@@ -67203,14 +67203,11 @@ var Comments = /*#__PURE__*/function (_BasePlugin) {
         from: coords.highlight
       });
       this.show();
-      this.preparingForEdit = true;
       setTimeout(function () {
         if (_this4.hot) {
           _this4.hot.deselectCell();
 
           _this4.editor.focus();
-
-          delete _this4.preparingForEdit;
         }
       }, 10);
     }
@@ -69691,7 +69688,7 @@ var _array = __webpack_require__(13);
 
 var _number = __webpack_require__(27);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 var _element = __webpack_require__(16);
 
@@ -76120,18 +76117,6 @@ var MergeCells = /*#__PURE__*/function (_BasePlugin) {
       this.mergedCellsCollection.clear();
     }
     /**
-      * Serializations the merged cell container
-      * Quire Extension
-      *
-      * @returns {Array[] A copy of the merged cell state suitable for persisting in remote storage}
-      */
-
-  }, {
-    key: "serializeCollections",
-    value: function serializeCollections() {
-      return this.mergedCellsCollection.serialize();
-    }
-    /**
      * Returns `true` if a range is mergeable.
      *
      * @private
@@ -77140,8 +77125,6 @@ __webpack_require__(19);
 
 __webpack_require__(43);
 
-__webpack_require__(69);
-
 var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(26));
 
 var _classCallCheck2 = _interopRequireDefault(__webpack_require__(1));
@@ -77441,25 +77424,6 @@ var MergedCellsCollection = /*#__PURE__*/function () {
       var firstRenderableRow = this.hot.rowIndexMapper.getFirstNotHiddenIndex(mergeParent.row, 1);
       var firstRenderableColumn = this.hot.columnIndexMapper.getFirstNotHiddenIndex(mergeParent.col, 1);
       return new _index.CellCoords(firstRenderableRow, firstRenderableColumn);
-    }
-    /**
-      * Serializations the merged cell container
-      * Quire Extension
-      *
-      * @returns {Array[] A copy of the merged cell state suitable for persisting in remote storage}
-      */
-
-  }, {
-    key: "serialize",
-    value: function serialize() {
-      return this.mergedCells.map(function (entry) {
-        return {
-          col: entry.col,
-          colspan: entry.colspan,
-          row: entry.row,
-          rowspan: entry.rowspan
-        };
-      });
     }
     /**
      * Shift the merged cell in the direction and by an offset defined in the arguments.
@@ -84069,7 +84033,7 @@ exports.default = void 0;
 
 __webpack_require__(75);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(19);
 
@@ -84231,7 +84195,7 @@ var _createClass2 = _interopRequireDefault(__webpack_require__(2));
 
 var _object = __webpack_require__(12);
 
-var _string = __webpack_require__(70);
+var _string = __webpack_require__(69);
 
 /**
  * @plugin ExportFile
@@ -90287,7 +90251,7 @@ var _interopRequireDefault = __webpack_require__(0);
 exports.__esModule = true;
 exports.default = void 0;
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(5);
 
@@ -95266,7 +95230,7 @@ var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(26));
 
 var _taggedTemplateLiteral2 = _interopRequireDefault(__webpack_require__(58));
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(19);
 
@@ -95638,7 +95602,7 @@ __webpack_require__(21);
 
 __webpack_require__(34);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(44);
 
@@ -96545,7 +96509,7 @@ __webpack_require__(21);
 
 __webpack_require__(34);
 
-__webpack_require__(69);
+__webpack_require__(70);
 
 __webpack_require__(44);
 
